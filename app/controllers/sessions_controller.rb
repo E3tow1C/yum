@@ -3,12 +3,8 @@ class SessionsController < ApplicationController
     auth = request.env["omniauth.auth"]
     user = User.from_omniauth(auth)
 
-    if user
-      session[:user_id] = user.id
-      redirect_to dashboard_path, notice: "Signed in successfully."
-    else
-      redirect_to root_path, alert: "Failed to sign in."
-    end
+    session[:user_id] = user.id
+    redirect_to root_path, notice: "Signed in successfully!"
   end
 
   def destroy
