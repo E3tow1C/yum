@@ -7,11 +7,12 @@ Rails.application.routes.draw do
 
   # Authentication routes
   get "auth/:provider/callback", to: "sessions#create"
+  get "auth/:provider/sign-out/callback", to: "sessions#sign_out_keycloak_success"
   get "auth/failure", to: "sessions#failure"
-  get "signout", to: "sessions#destroy", as: "signout"
+  get "signout", to: "sessions#destroy", as: :signout
 
   # Protected routes
-  get "dashboard", to: "dashboard#index", as: "dashboard"
+  get "dashboard", to: "dashboard#index", as: :dashboard
 
   # Home page
   root "home#index"
