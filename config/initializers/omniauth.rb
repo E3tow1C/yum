@@ -9,7 +9,8 @@ Rails.application.config.middleware.use OmniAuth::Builder do
       realm: ENV["KEYCLOAK_REALM"],
       authorize_url: "/auth/realms/#{ENV["KEYCLOAK_REALM"]}/protocol/openid-connect/auth",
       token_url: "/auth/realms/#{ENV["KEYCLOAK_REALM"]}/protocol/openid-connect/token",
-      userinfo_url: "/auth/realms/#{ENV["KEYCLOAK_REALM"]}/protocol/openid-connect/userinfo"
+      userinfo_url: "/auth/realms/#{ENV["KEYCLOAK_REALM"]}/protocol/openid-connect/userinfo",
+      end_session_endpoint: "/auth/realms/#{ENV["KEYCLOAK_REALM"]}/protocol/openid-connect/logout"
     }
 end
 
