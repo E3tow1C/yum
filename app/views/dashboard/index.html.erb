@@ -1,0 +1,18 @@
+<h1>Dashboard</h1>
+
+<div class="container">
+  <h2>Welcome to your protected dashboard, <%= current_user.name %></h2>
+  <p>This page is only accessible to authenticated users.</p>
+  <p>Your account details:</p>
+  <ul>
+    <li><strong>Name:</strong> <%= current_user.name %></li>
+    <li><strong>Email:</strong> <%= current_user.email %></li>
+    <li><strong>Provider:</strong> <%= current_user.provider %></li>
+    <li><strong>UID:</strong> <%= current_user.uid %></li>
+  </ul>
+  
+  <div class="mt-4">
+    <%= link_to "Back to Home", root_path, class: "btn btn-secondary" %>
+    <%= link_to "Sign out", signout_path, class: "btn btn-danger" %>
+  </div>
+</div>
