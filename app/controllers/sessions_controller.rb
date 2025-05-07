@@ -8,6 +8,8 @@ class SessionsController < ApplicationController
 
     session[:id_token] = id_token
     session[:user_id] = user.id
+    # assuming the user has role "admin_director", but this should be returned from Keycloak
+    session[:role] = "admin_director"
 
     redirect_to root_path, notice: "Signed in successfully!"
   end
