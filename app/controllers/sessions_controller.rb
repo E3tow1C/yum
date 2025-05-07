@@ -22,6 +22,7 @@ class SessionsController < ApplicationController
   def sign_out_keycloak_success
     session.delete :id_token
     session.delete :user_id
+    session.delete :role
     reset_session
 
     redirect_to root_path, notice: "You have been signed out."
