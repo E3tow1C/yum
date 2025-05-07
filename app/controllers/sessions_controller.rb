@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :authenticate_user!, only: [ :sign_out_keycloak_success ]
+
   def create
     auth = request.env["omniauth.auth"]
     user = User.from_omniauth(auth)
