@@ -1,16 +1,36 @@
-<p style="color: green"><%= notice %></p>
+<div data-controller="toggle">
+  <div class="flex flex-col">
+    <p style="color: green"><%= notice %></p>
+  
+    <% content_for :title, "Courses" %>
+  
+    <h1 class="text-4xl text-yellow-700">Courses</h1>
+  
+    <div>
+      <div id="courses" class="space-y-2">
+        <% @courses.each do |course| %>
+          <%= render "shared/course_card", course: course %>
+        <% end %>
+      </div>
+    </div>
+  
+    <%= link_to new_course_path do %>
+      <div class="border-2 rounded-2xl border-gray-300 bg-green-100 p-2 mb-2">
+        <p class="text-center">Create a new course</p>
+      </div>
+    <% end %>
+  </div>
+  
+  <button data-action="click->toggle#toggleCancelAndConfirmButtonVisibility" data-toggle-target="addCoursesToSchoolButton" class="mb-4 px-3 py-1 bg-yellow-200 rounded hover:bg-yellow-300">
+    Add Courses to school
+  </button>  
 
-<% content_for :title, "Courses" %>
+  <button data-action="click->toggle#toggleCancelAndConfirmButtonVisibility" data-toggle-target="cancelButton" class="hidden mb-4 px-3 py-1 bg-yellow-200 rounded hover:bg-yellow-300">
+    Cancel
+  </button>
 
-<h1>Courses</h1>
+  <button data-action="click->toggle#showSelectedCourses" data-toggle-target="confirmAddCourses" class="hidden mb-4 px-3 py-1 bg-yellow-200 rounded hover:bg-yellow-300">
+    Add Courses Confirm
+  </button>
 
-<div id="courses">
-  <% @courses.each do |course| %>
-    <%= render course %>
-    <p>
-      <%= link_to "Show this course", course %>
-    </p>
-  <% end %>
 </div>
-
-<%= link_to "New course", new_course_path %>
